@@ -1,4 +1,21 @@
 <?php
+require_once '../config/app.php';
+require_once '../controller/AuthenticationController.php';
+
+// Check if user is authenticated
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    $_SESSION['message'] = "Login With Admin's Email And Password To Access The Admin Dashboard.";
+    header("Location: ../login.php");
+    exit(0);
+}
+
+// Check if user is admin
+$auth = new AuthenticationController();
+if (!$auth->admin()) {
+    header("Location: ../index.php");
+    exit(0);
+}
+
 include './includes/header.php';
 ?>
 
@@ -46,7 +63,6 @@ include './includes/header.php';
         </div>
     </div>
 </div>
-
 
 <?php
 include './includes/footer.php';

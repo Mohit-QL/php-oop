@@ -25,9 +25,12 @@ function base_url($slug = '')
 
                     <?php if (isset($_SESSION['authenticated'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <p class="nav-link m-0" href="#">
                                 Welcome, <?= $_SESSION['auth_user']['fname']; ?>
-                            </a>
+                            </p>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo base_url('profile.php'); ?>">My Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('logout.php'); ?>">Logout</a>

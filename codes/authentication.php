@@ -55,10 +55,22 @@ if (isset($_POST['login_btn'])) {
 
     if ($login) {
         $_SESSION['message'] = "Login Successful!";
-        header("Location: index.php");
-        exit(0);
+
+        if ($_SESSION['auth_role'] == '1') {
+            header("Location: admin");
+            exit(0);
+        } elseif ($_SESSION['auth_role'] == '0') {
+            header("Location: index.php");
+            exit(0);
+        } else {
+            $_SESSION['message'] = "Invalid Role Access!";
+            header("Location: login.php");
+            exit(0);
+        }
     } else {
         header("Location: login.php");
         exit(0);
     }
 }
+
+

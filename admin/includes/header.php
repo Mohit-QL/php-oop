@@ -25,5 +25,5 @@
         include 'sidebar.php';
         ?>
 
-        <div id="layoutSidenav_content" style="margin-bottom: 56px;">
+        <div id="layoutSidenav_content" style="margin-bottom: 56px; padding-left:0px;">
             <main>
